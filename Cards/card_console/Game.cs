@@ -14,8 +14,6 @@ namespace card_console
         List<Karta> k1;
         List<Karta> k2;
         Karta[] k3;
-        //Player p1;
-        //Player p2;
         Karta k;
 
 
@@ -24,15 +22,13 @@ namespace card_console
             one = new Dictionary<int, List<Karta>>();
             k1 = new List<Karta>();
             k2 = new List<Karta>();
-            //p1 = new Player();
-            //p2 = new Player();
             Karts = new List<Karta>();
             k = new Karta();
             k3 = new Karta[36];
-            CreateKarts();
+           // CreateKarts();
+            Sorting();
             F1();
             F2();
-            Sorting();
             one.Add(1, k1);
             one.Add(2, k2);
 
@@ -61,30 +57,31 @@ namespace card_console
 
         void F2()
         {
-            for (int i = 0; i < 18; i++)
+            for (int i = 35; i >= 18; --i)
             {
-                k2.Add(Karts[35 - i]);
+                k2.Add(Karts[i]);
             }
         }
 
         void Sorting()
         {
+            bool b = true;
             for (int i = 0; i < 36; i++)
             {
-                while (true)
+                while (b)
                 {
+                    b = false;
                     k.Suit = r.Next(0, 4);
                     k.Type = r.Next(6, 14);
 
                     for (int j = 0; j < i; ++j)
-                        if (k3[j] != k)
-                            continue;
+                        if (k3[j] == k)
+                            b = true;
 
                     k3[i] = k;
-                    break;
                 }
-                Karts.Remove(k);
-                Karts.Add(k);
+                //Karts.Remove(k);
+                Karts.Add(k3[i]);
             }
         }
 
@@ -96,9 +93,9 @@ namespace card_console
 
             for (int i = 0; k1.Count > 0 && k2.Count > 0; i++)
             {
-                k1[k1.Count - 1].Show(k1[k1.Count - 1].Suit, k1[k1.Count - 1].Type);
+                k1[k1.Count - 1].Show();
                     Console.Write(" vs ");
-                    k2[k2.Count - 1].Show(k2[k2.Count - 1].Suit, k2[k2.Count - 1].Type);
+                    k2[k2.Count - 1].Show();
 
                 if(k1[k1.Count - 1].Type > k2[k2.Count - 1].Type || k1[k1.Count - 1].Type == k2[k2.Count - 1].Type)
                 {
