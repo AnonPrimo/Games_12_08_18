@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cards
+namespace card_console
 {
     class Game
     {
@@ -13,6 +13,7 @@ namespace Cards
         List<Karta> Karts;
         List<Karta> k1;
         List<Karta> k2;
+        Karta[] k3;
         //Player p1;
         //Player p2;
         Karta k;
@@ -27,9 +28,11 @@ namespace Cards
             //p2 = new Player();
             Karts = new List<Karta>();
             k = new Karta();
+            k3 = new Karta[36];
             CreateKarts();
             F1();
             F2();
+            Sorting();
             one.Add(1, k1);
             one.Add(2, k2);
 
@@ -74,10 +77,10 @@ namespace Cards
                     k.Type = r.Next(6, 14);
 
                     for (int j = 0; j < i; ++j)
-                        if (k1[j] == k)
+                        if (k3[j] != k)
                             continue;
 
-                    k1[i] = k;
+                    k3[i] = k;
                     break;
                 }
                 Karts.Remove(k);
@@ -87,29 +90,36 @@ namespace Cards
 
         public void Comp()
         {
-            for (int i = 0; k1.Count!=0||k2.Count!=0; i++)
-            {
-                k1[k1.Count - 1].Show();
-                    Console.WriteLine(" vs ");
-                    k2[k2.Count - 1].Show();
+            Sorting();
+            F1();
+            F2();
 
-                if(k1[k1.Count - 1].Type < k2[k2.Count - 1].Type)
+            for (int i = 0; k1.Count > 0 && k2.Count > 0; i++)
+            {
+                k1[k1.Count - 1].Show(k1[k1.Count - 1].Suit, k1[k1.Count - 1].Type);
+                    Console.Write(" vs ");
+                    k2[k2.Count - 1].Show(k2[k2.Count - 1].Suit, k2[k2.Count - 1].Type);
+
+                if(k1[k1.Count - 1].Type > k2[k2.Count - 1].Type || k1[k1.Count - 1].Type == k2[k2.Count - 1].Type)
                 {
-                    Console.WriteLine("P1 take cards");
-                    k1.Add(k2[k2.Count - 1]);
+                    Console.WriteLine("\nP1 take cards");
+                    k1.Insert(0, k2[k2.Count - 1]);
+                    k1.Insert(1, k1[k1.Count - 1]);
                     k2.Remove(k2[k2.Count - 1]);
                 }
                 else
                 {
-                    Console.WriteLine("P2 take cards");
-                    k2.Add(k1[k1.Count - 1]);
+                    Console.WriteLine("\nP2 take cards");
+                    k2.Insert(0, k1[k1.Count - 1]);
+                    k2.Insert(1, k2[k2.Count - 1]);
                     k1.Remove(k1[k1.Count - 1]);
                 }
+                Console.WriteLine();
             }
             if(k1.Count == 0)
-                Console.WriteLine("P2 win!");
+                Console.WriteLine("\nP2 win!");
             else
-                Console.WriteLine("P1 win!");
+                Console.WriteLine("\nP1 win!");
         }
         
 

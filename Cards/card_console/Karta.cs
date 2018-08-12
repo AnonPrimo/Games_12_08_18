@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cards
+namespace card_console
 {
     class Karta
     {
@@ -19,54 +19,54 @@ namespace Cards
             Type = t;
         }
 
-        public void Show()
+        public void Show(int s, int t)
         {
-            switch (Suit)
+            switch (s)
             {
                 case 0:
-                    Console.WriteLine("Heart");
+                    Console.Write("Heart");
                     break;
                 case 1:
-                    Console.WriteLine("Diamond");
+                    Console.Write("Diamond");
                     break;
                 case 2:
-                    Console.WriteLine("Club");
+                    Console.Write("Club");
                     break;
                 case 3:
-                    Console.WriteLine("Spade");
+                    Console.Write("Spade");
                     break;
                 default:
                     break;
             }
-            Console.WriteLine(" - ");
-            switch (Type)
+            Console.Write(" - ");
+            switch (t)
             {
                 case 6:
-                    Console.WriteLine("6");
+                    Console.Write("6");
                     break;
                 case 7:
-                    Console.WriteLine("7");
+                    Console.Write("7");
                     break;
                 case 8:
-                    Console.WriteLine("8");
+                    Console.Write("8");
                     break;
                 case 9:
-                    Console.WriteLine("9");
+                    Console.Write("9");
                     break;
                 case 10:
-                    Console.WriteLine("10");
+                    Console.Write("10");
                     break;
                 case 11:
-                    Console.WriteLine("Jack");
+                    Console.Write("Jack");
                     break;
                 case 12:
-                    Console.WriteLine("Queen");
+                    Console.Write("Queen");
                     break;
                 case 13:
-                    Console.WriteLine("King");
+                    Console.Write("King");
                     break;
                 case 14:
-                    Console.WriteLine("Ace");
+                    Console.Write("Ace");
                     break;
                 default:
                     break;
