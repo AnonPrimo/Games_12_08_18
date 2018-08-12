@@ -25,10 +25,11 @@ namespace card_console
             Karts = new List<Karta>();
             k = new Karta();
             k3 = new Karta[36];
-            CreateKarts();
+            // CreateKarts();
+            Sorting();
             F1();
             F2();
-            Sorting();
+           
             one.Add(1, k1);
             one.Add(2, k2);
 
@@ -80,8 +81,8 @@ namespace card_console
 
                     k3[i] = k;
                 }
-                Karts.Remove(k);
-                Karts.Insert(r.Next(0, 35), k);
+                
+                Karts.Insert(r.Next(0, 35), k3[i]);
             }
             foreach (Karta k5 in Karts)
             {
@@ -91,9 +92,9 @@ namespace card_console
 
         public void Comp()
         {
-            Sorting();
+           /* Sorting();
            
-           /* F1();
+            F1();
             Console.WriteLine();
             foreach (Karta k5 in k1)
             {
