@@ -25,10 +25,10 @@ namespace card_console
             Karts = new List<Karta>();
             k = new Karta();
             k3 = new Karta[36];
-           // CreateKarts();
-            Sorting();
+            CreateKarts();
             F1();
             F2();
+            Sorting();
             one.Add(1, k1);
             one.Add(2, k2);
 
@@ -57,9 +57,9 @@ namespace card_console
 
         void F2()
         {
-            for (int i = 35; i >= 18; --i)
+            for (int i = 0; i < 18; i++)
             {
-                k2.Add(Karts[i]);
+                k2.Add(Karts[35 - i]);
             }
         }
 
@@ -80,43 +80,59 @@ namespace card_console
 
                     k3[i] = k;
                 }
-                //Karts.Remove(k);
-                Karts.Add(k3[i]);
+                Karts.Remove(k);
+                Karts.Insert(r.Next(0, 35), k);
+            }
+            foreach (Karta k5 in Karts)
+            {
+                Console.WriteLine(k5.Suit + " " + k5.Type);
             }
         }
 
         public void Comp()
         {
             Sorting();
-            F1();
-            F2();
-
-            for (int i = 0; k1.Count > 0 && k2.Count > 0; i++)
+           
+           /* F1();
+            Console.WriteLine();
+            foreach (Karta k5 in k1)
             {
-                k1[k1.Count - 1].Show();
-                    Console.Write(" vs ");
-                    k2[k2.Count - 1].Show();
-
-                if(k1[k1.Count - 1].Type > k2[k2.Count - 1].Type || k1[k1.Count - 1].Type == k2[k2.Count - 1].Type)
-                {
-                    Console.WriteLine("\nP1 take cards");
-                    k1.Insert(0, k2[k2.Count - 1]);
-                    k1.Insert(1, k1[k1.Count - 1]);
-                    k2.Remove(k2[k2.Count - 1]);
-                }
-                else
-                {
-                    Console.WriteLine("\nP2 take cards");
-                    k2.Insert(0, k1[k1.Count - 1]);
-                    k2.Insert(1, k2[k2.Count - 1]);
-                    k1.Remove(k1[k1.Count - 1]);
-                }
-                Console.WriteLine();
+                Console.WriteLine(k5.Suit + " " + k5.Type);
             }
-            if(k1.Count == 0)
-                Console.WriteLine("\nP2 win!");
-            else
-                Console.WriteLine("\nP1 win!");
+            Console.WriteLine();
+            F2();
+            foreach (Karta k5 in k2)
+            {
+                Console.WriteLine(k5.Suit + " " + k5.Type);
+            }
+
+              for (int i = 0; k1.Count > 0 && k2.Count > 0; i++)
+              {
+                  k1[k1.Count - 1].Show(k1[k1.Count - 1].Suit, k1[k1.Count - 1].Type);
+                      Console.Write(" vs ");
+                      k2[k2.Count - 1].Show(k2[k2.Count - 1].Suit, k2[k2.Count - 1].Type);
+
+                  if(k1[k1.Count - 1].Type > k2[k2.Count - 1].Type || k1[k1.Count - 1].Type == k2[k2.Count - 1].Type)
+                  {
+                      Console.WriteLine("\nP1 take cards");
+                      k1.Insert(0, k2[k2.Count - 1]);
+                      k1.Insert(1, k1[k1.Count - 1]);
+                      k2.Remove(k2[k2.Count - 1]);
+                  }
+                  else
+                  {
+                      Console.WriteLine("\nP2 take cards");
+                      k2.Insert(0, k1[k1.Count - 1]);
+                      k2.Insert(1, k2[k2.Count - 1]);
+                      k1.Remove(k1[k1.Count - 1]);
+                  }
+                  Console.WriteLine();
+              }
+              if(k1.Count == 0)
+                  Console.WriteLine("\nP2 win!");
+              else
+              if(k2.Count == 0)
+                  Console.WriteLine("\nP1 win!");*/
         }
         
 

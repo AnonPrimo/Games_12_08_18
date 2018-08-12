@@ -19,9 +19,9 @@ namespace card_console
             Type = t;
         }
 
-        public void Show()
+        public void Show(int s, int t)
         {
-            switch (Suit)
+            switch (s)
             {
                 case 0:
                     Console.Write("Heart");
@@ -39,7 +39,7 @@ namespace card_console
                     break;
             }
             Console.Write(" - ");
-            switch (Type)
+            switch (t)
             {
                 case 6:
                     Console.Write("6");
