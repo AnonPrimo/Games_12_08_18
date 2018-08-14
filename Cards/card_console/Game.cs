@@ -29,7 +29,7 @@ namespace card_console
             Sorting();
             F1();
             F2();
-           
+            F3();
             one.Add(1, k1);
             one.Add(2, k2);
 
@@ -64,6 +64,14 @@ namespace card_console
             }
         }
 
+        void F3()
+        {
+            for (int i = 0; i < 36; i++)
+            {
+                k3[i] = new Karta();
+            }
+        }
+
         void Sorting()
         {
             bool b = true;
@@ -72,7 +80,7 @@ namespace card_console
                 while (b)
                 {
                     b = false;
-                    k.Suit = r.Next(0, 4);
+                    k.Suit = r.Next(0, 3);
                     k.Type = r.Next(6, 14);
 
                     for (int j = 0; j < i; ++j)
